@@ -1,0 +1,659 @@
+html {
+overflow-y: scroll;
+background-color: transparent;
+}
+body {
+margin: 0;
+color: #111;
+font-family: 'Noto Sans KR', sans-serif;
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+box-sizing: border-box;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+main {
+flex: 1 0 auto;
+}
+footer {
+flex-shrink: 0;
+background-color: #fff;
+border-top: 1px solid #333;
+display: flex;
+align-items: center;
+justify-content: center;
+height: 50px;
+}
+/* === 공통 콘텐츠 스타일 === */
+.container {
+max-width: 800px;
+margin: 80px auto;
+padding: 40px;
+background-color: rgba(255, 255, 255, 0.92);
+border-radius: 4px;
+box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+p {
+word-break: keep-all;
+line-height: 1.8;
+}
+.header-container {
+max-width: 900px;
+margin: 0 auto;
+padding: 0 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+/* === 헤더 & 푸터 === */
+.site-header {
+padding: 5px 0;
+border-bottom: 1px solid #333;
+}
+footer p {
+margin: 0;
+font-size: 13px;
+color: #111;
+}
+.site-header h1 {
+font-family: 'Playfair Display', serif;
+font-weight: 400;
+font-size: 28px;
+margin: 0;
+}
+.site-title-link {
+text-decoration: none;
+color: #111;
+display: flex;
+align-items: center;
+}
+.site-nav ul {
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+}
+.site-nav li {
+margin-left: 20px;
+}
+.site-nav a {
+text-decoration: none;
+color: #111;
+font-size: 16px;
+padding: 5px 10px;
+border-radius: 4px;
+transition: background-color 0.3s ease;
+}
+.page-home .site-nav a:hover {
+background-color: rgba(255, 255, 255, 0.7);
+}
+/* === 홈페이지 전용 === */
+.page-home body {
+display: block;
+}
+.page-home .site-header {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+border: none;
+background: transparent;
+z-index: 10;
+}
+.page-home main {
+display: none;
+}
+.page-home footer {
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+border-top: none;
+background: transparent;
+}
+.page-home .site-header h1,
+.page-home .site-nav a,
+.page-home footer p,
+.page-home .site-title-link {
+color: #111;
+}
+
+/* ★★★★★★★★★★★★★★★★★★★★
+모바일 햄버거 메뉴 스타일 (추가)
+★★★★★★★★★★★★★★★★★★★★ */
+
+/* 모바일 메뉴 버튼 (PC에서는 숨김) */
+.mobile-menu-btn {
+	display: none;
+	position: relative;
+	width: 24px;
+	height: 16px;
+	cursor: pointer;
+	z-index: 1050; 
+	border: none;
+	background: transparent;
+	padding: 0;
+}
+
+/* 햄버거 아이콘의 세 줄 */
+.mobile-menu-btn span {
+	display: block;
+	position: absolute;
+	height: 2px;
+	width: 100%;
+	background: #111;
+	border-radius: 3px;
+	opacity: 1;
+	left: 0;
+	transform: rotate(0deg);
+	transition: .25s ease-in-out;
+}
+.mobile-menu-btn span:nth-child(1) { top: 0px; }
+.mobile-menu-btn span:nth-child(2) { top: 7px; }
+.mobile-menu-btn span:nth-child(3) { top: 14px; }
+
+/* 메뉴가 열렸을 때 (body.menu-open) X 모양으로 변환 */
+body.menu-open .mobile-menu-btn span:nth-child(1) {
+	top: 7px;
+	transform: rotate(135deg);
+}
+body.menu-open .mobile-menu-btn span:nth-child(2) {
+	opacity: 0;
+	left: -60px;
+}
+body.menu-open .mobile-menu-btn span:nth-child(3) {
+	top: 7px;
+	transform: rotate(-135deg);
+}
+/* 메뉴가 열렸을 때 본문 스크롤 방지 */
+body.menu-open {
+	overflow: hidden;
+}
+
+/* === 홈페이지 배경 === */
+.main-canvas {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -1;
+}
+.living-canvas-slide {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+opacity: 0;
+transition: opacity 1.5s ease-in-out;
+}
+.living-canvas-slide.active {
+opacity: 1;
+}
+.living-canvas-slide img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+/* === 애니메이션 === */
+@keyframes pulse-in-out {
+from {
+transform: scale(1);
+}
+to {
+transform: scale(1.06);
+}
+}
+@keyframes vertical-pan-effect {
+from {
+transform: scale(1.3) translateY(-3%);
+}
+to {
+transform: scale(1.3) translateY(3%);
+}
+}
+.living-canvas-slide.pulse-in-out img {
+animation: pulse-in-out 12s ease-in-out infinite alternate;
+}
+.living-canvas-slide.vertical-pan img {
+animation: vertical-pan-effect 12s ease-in-out infinite alternate;
+}
+
+/* === 갤러리 페이지 === */
+.page-works main {
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 20px;
+box-sizing: border-box;
+}
+.slideshow-container {
+position: relative;
+width: 100%;
+height: 100%;
+max-width: 1500px;
+max-height: 85vh;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.slide {
+display: none;
+}
+.slide.active {
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+position: relative;
+}
+.slide img {
+display: block;
+max-width: 100%;
+max-height: 100%;
+object-fit: contain;
+}
+.prev,
+.next {
+cursor: pointer;
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+padding: 16px;
+color: white;
+font-weight: bold;
+font-size: 24px;
+background-color: rgba(0, 0, 0, 0.3);
+transition: all 0.3s ease;
+z-index: 5;
+opacity: 0;
+}
+.slideshow-container:hover .prev,
+.slideshow-container:hover .next {
+opacity: 1;
+}
+.prev {
+left: 0px;
+}
+.next {
+right: 0px;
+}
+.prev:hover,
+.next:hover {
+background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* 갤러리 캡션 (최종 통합 버전) - JS 제어용으로 수정 */
+.caption {
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: rgba(0, 0, 0, 0.7);
+color: white;
+padding: 15px 20px;
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+box-sizing: border-box;
+opacity: 0;
+transition: opacity 0.3s;
+pointer-events: none; /* 캡션 자체가 클릭(터치)되는 것을 방지 */
+}
+
+/* PC의 hover 와 모바일의 JS 제어를 모두 처리하는 새로운 규칙 */
+.slide.active:hover .caption,
+.slide.caption-visible .caption {
+opacity: 1;
+}
+
+/* 캡션 안의 아이콘 스타일 */
+.caption .icon {
+width: 28px;
+height: 28px;
+background-color: rgba(255, 255, 255, 0.9);
+color: #111;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 18px;
+font-weight: 400;
+margin-right: 15px;
+flex-shrink: 0;
+}
+
+/* 캡션 안의 텍스트 영역 */
+.caption-text {
+text-align: center;
+}
+.caption-text h3 {
+margin: 0 0 5px 0;
+font-size: 16px;
+}
+.caption-text p {
+margin: 0;
+font-size: 13px;
+opacity: 0.8;
+}
+
+/* 링크가 있는 슬라이드 전체를 감싸는 링크 */
+.slide-link {
+display: block;
+text-decoration: none;
+color: inherit;
+position: relative;
+}
+
+/* === 활성 메뉴 === */
+.page-statement .site-nav a[href="statement.html"],
+.page-works .site-nav a[href="works.html"],
+.page-archive .site-nav a[href="archive.html"],
+.page-cv .site-nav a[href="cv.html"],
+.page-contact .site-nav a[href="contact.html"],
+.page-home .site-nav a[href="index.html"] {
+font-style: italic;
+}
+
+/* 아카이브 페이지 그리드 - 최종 수정 */
+.archive-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 50px 40px;
+max-width: 900px;
+margin: 80px auto;
+padding: 0 20px;
+}
+.archive-entry a {
+text-decoration: none;
+color: inherit;
+display: block;
+transition: transform 0.2s ease-in-out;
+}
+.archive-entry a:hover {
+transform: translateY(-5px);
+}
+.archive-text {
+margin-bottom: 15px;
+}
+.archive-meta {
+font-size: 14px;
+color: #888;
+margin: 0;
+}
+.archive-title {
+font-size: 20px;
+font-weight: 500;
+margin: 4px 0;
+}
+.archive-subtitle {
+font-size: 14px;
+color: #333;
+margin: 0;
+}
+.archive-entry img {
+width: 100%;
+height: auto;
+display: block;
+}
+
+/* === 아카이브 이미지 포스트 === */
+.image-post-container {
+max-width: 800px;
+margin: 60px auto;
+padding: 0 20px;
+}
+.image-post-container img {
+width: 100%;
+height: auto;
+display: block;
+}
+
+/* === CV & Statement 타이틀 블록 === */
+.title-block {
+display: flex;
+justify-content: space-between;
+align-items: baseline;
+border-bottom: 1px solid #333;
+padding-bottom: 15px;
+margin-bottom: 30px;
+}
+.title-block h1 {
+margin: 0;
+}
+.title-block .lang-toggle-btn {
+text-decoration: underline;
+font-size: 14px;
+color: #888;
+cursor: pointer;
+}
+.title-block .lang-toggle-btn:hover {
+color: #111;
+}
+
+/* === 작품 상세 페이지 === */
+.artwork-detail-container {
+max-width: 900px;
+margin: 60px auto;
+padding: 0 20px;
+}
+.main-artwork-image img {
+width: 100%;
+height: auto;
+}
+.artwork-info {
+text-align: center;
+margin: 40px 0;
+padding: 30px 0;
+border-top: 1px solid #ddd;
+border-bottom: 1px solid #ddd;
+}
+.artwork-info h1 {
+font-size: 24px;
+margin: 0 0 10px 0;
+}
+.artwork-info p {
+font-size: 16px;
+color: #555;
+margin: 0;
+line-height: 1.6;
+}
+.additional-images-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 20px;
+margin-top: 50px;
+}
+.additional-images-grid img {
+width: 100%;
+height: auto;
+display: block;
+}
+
+/* === 라이트박스 스타일 === */
+.lightbox-trigger img {
+cursor: zoom-in;
+transition: opacity 0.2s ease;
+}
+.lightbox-trigger:hover img {
+opacity: 0.85;
+}
+.lightbox-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.85);
+display: none;
+justify-content: center;
+align-items: center;
+z-index: 1000;
+}
+.lightbox-content {
+max-width: 90%;
+max-height: 90%;
+object-fit: contain;
+}
+.lightbox-close {
+position: absolute;
+top: 20px;
+right: 35px;
+color: #fff;
+font-size: 40px;
+font-weight: bold;
+cursor: pointer;
+transition: color 0.2s ease;
+}
+.lightbox-close:hover {
+color: #ccc;
+}
+
+/* ★★★★★ 홈페이지 메인 타이틀 (최종 완성 버전) ★★★★★ */
+.main-title {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	text-align: center;
+	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+	z-index: 5;
+	
+	width: 55vw; 
+	max-width: 900px;
+}
+
+.main-title h2 {
+	font-family: 'Playfair Display', serif;
+	font-weight: 400;
+	font-size: clamp(2rem, 5vw, 3.75rem); 
+	margin: 0 0 15px 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.main-title p {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: clamp(0.875rem, 1.5vw, 1.375rem); 
+	font-weight: 300;
+	letter-spacing: 0.1em;
+	opacity: 0.9;
+	margin: 0;
+	white-space: nowrap;
+}
+
+/* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+모바일 반응형 스타일 (화면 너비 768px 이하일 때 적용)
+★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+@media (max-width: 768px) {
+
+	/* 헤더 레이아웃 조정 */
+	.header-container {
+		justify-content: space-between;
+		padding: 15px 20px;
+		align-items: center;
+	}
+
+	.site-header h1 {
+		font-size: 24px;
+	}
+	
+	.mobile-menu-btn {
+		display: block;
+	}
+	
+	.site-nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(255, 255, 255, 0.98);
+		
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transition: opacity 0.3s ease, visibility 0.3s ease;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 1000;
+	}
+	
+	body.menu-open .site-nav {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+	}
+
+	.site-nav ul {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.site-nav li {
+		margin: 0;
+		padding: 15px 0;
+	}
+	
+	.site-nav a {
+		font-size: 22px;
+		font-weight: 300;
+		color: #111;
+	}
+	
+	.site-header {
+		border-bottom: 1px solid #333;
+		background-color: #fff;
+	}
+
+	.container,
+	.artwork-detail-container,
+	.archive-grid {
+		margin-top: 40px;
+		margin-bottom: 40px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	/* 아카이브 모바일 그리드 수정 */
+	.archive-grid {
+		grid-template-columns: 1fr 1fr; /* 1열에서 2열로 변경 */
+		gap: 40px 20px; /* 열 간격 20px 추가 */
+	}
+
+	.archive-title {
+		font-size: 16px; /* 모바일에서만 폰트 사이즈 축소 */
+	}
+
+	.additional-images-grid {
+		grid-template-columns: 1fr;
+		gap: 15px;
+		margin-top: 30px;
+	}
+
+	.artwork-info {
+		margin: 30px 0;
+		padding: 25px 0;
+	}
+	.artwork-info h1 {
+		font-size: 20px;
+	}
+	.artwork-info p {
+		font-size: 14px;
+	}
+
+	.main-title {
+		width: 90%; 
+	}
+
+}

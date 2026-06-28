@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extra Dimension - grid No.∞22 - KANG EUN SOL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="page-statement">
+    <header class="site-header">
+      <div class="header-container">
+        <a href="index.html" class="site-title-link">
+          <h1>KANG EUN SOL</h1>
+        </a>
+
+        <!-- ★ PC용 메뉴 (모바일에서는 숨겨짐) ★ -->
+        <nav class="site-nav">
+          <ul>
+            <li><a href="statement.html">STATEMENT</a></li>
+            <li><a href="works.html">WORK</a></li>
+            <li><a href="archive.html">ARCHIVE</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </nav>
+
+        <!-- ★ 모바일용 햄버거 버튼 (PC에서는 숨겨짐) ★ -->
+        <button id="mobile-menu-btn" class="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <div class="artwork-detail-container">
+        <!-- 모듈 1: 대표 이미지 -->
+        <div class="main-artwork-image">
+          <!-- ★ 수정 1: 이미지를 링크(a 태그)로 감쌉니다. -->
+          <a href="images/ed-g_in22_f.jpg" class="lightbox-trigger">
+            <img
+              src="images/ed-g_in22_f.jpg"
+              alt="Extra Dimension - grid No.∞22 대표 이미지"
+            />
+          </a>
+        </div>
+
+        <!-- 모듈 2: 작품 정보 -->
+        <div class="artwork-info">
+          <h1>Extra Dimension - grid No.∞22</h1>
+          <p>253.9x514.3cm, synthetic resin, oil & steel on canvas, 2018</p>
+        </div>
+
+        <!-- 모듈 4: 추가 이미지 -->
+        <div class="additional-images-grid">
+          <!-- ★ 수정 2: 모든 상세 이미지들을 각각 링크(a 태그)로 감쌉니다. -->
+          <a href="images/ed-g_in22_left.jpg" class="lightbox-trigger">
+            <img src="images/ed-g_in22_left.jpg" alt="작품 상세 1" />
+          </a>
+          <a href="images/ed-g_in22_m.jpg" class="lightbox-trigger">
+            <img src="images/ed-g_in22_m.jpg" alt="작품 상세 2" />
+          </a>
+          <a href="images/ed-g_in22_s.jpg" class="lightbox-trigger">
+            <img src="images/ed-g_in22_s.jpg" alt="작품 상세 3" />
+          </a>
+          <a href="images/ed-g_in22_left_s.jpg" class="lightbox-trigger">
+            <img src="images/ed-g_in22_left_s.jpg" alt="작품 상세 4" />
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- ★ 수정 3: 라이트박스 팝업을 위한 구조를 이곳에 추가합니다. -->
+    <div id="lightbox" class="lightbox-overlay">
+      <span class="lightbox-close">&times;</span>
+      <img class="lightbox-content" id="lightbox-image" />
+    </div>
+
+    <footer>
+      <p>&copy; 2014-2025 강은솔. All rights reserved.</p>
+    </footer>
+
+    <!-- ★ 수정 4: 이 페이지에 필요한 lightbox.js 스크립트를 연결합니다. -->
+    <script src="js/lightbox.js"></script>
+    <script src="js/mobile-menu.js"></script>
+    <!-- ★ 이 줄을 추가 -->
+  </body>
+</html>

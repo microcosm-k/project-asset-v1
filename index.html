@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project: Asset V1 - System Online</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Kangeunsol" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="page-home">
+    <!-- 1. 헤더 -->
+    <header class="site-header">
+      <div class="header-container">
+        <a href="index.html" class="site-title-link">
+          <h1>KANG EUN SOL</h1>
+        </a>
+
+        <!-- ★ PC용 메뉴 (모바일에서는 숨겨짐) ★ -->
+        <nav class="site-nav">
+          <ul>
+            <li><a href="statement.html">STATEMENT</a></li>
+            <li><a href="works.html">WORK</a></li>
+            <li><a href="archive.html">ARCHIVE</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </nav>
+
+        <!-- ★ 모바일용 햄버거 버튼 (PC에서는 숨겨짐) ★ -->
+        <button id="mobile-menu-btn" class="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 2. main (비어있음) -->
+    <main></main>
+
+    <!-- 3. 동적 배경 캔버스 (클래스 이름 'vertical'로 통일) -->
+    <div class="main-canvas">
+      <!-- ★★★★★★★★★★★★★★★★★★★★★★★★★★★
+첫 번째 슬라이드 수정 (텍스트 블록 추가)
+★★★★★★★★★★★★★★★★★★★★★★★★★★★ -->
+      <div class="living-canvas-slide active pulse-in-out">
+        <!-- 1. 텍스트 없는 배경 이미지로 교체 -->
+        <img src="images/2019_M.jpg" alt="메인 배경 이미지" />
+        <!-- 2. HTML 텍스트 블록 추가 -->
+        <div class="main-title">
+          <h2>
+            <span>K</span><span>A</span><span>N</span><span>G</span
+            ><span> E</span><span>U</span><span>N</span><span>S</span
+            ><span>O</span><span>L</span>
+          </h2>
+          <p>Extra Dimension : Cross-section Art</p>
+        </div>
+      </div>
+      <!-- ★★★★★★★★★★★★★★★★★★★★★★★★★★★
+수정 끝. 아래 슬라이드들은 원본 그대로입니다.
+★★★★★★★★★★★★★★★★★★★★★★★★★★★ -->
+      <div class="living-canvas-slide">
+        <img src="images/ed-g_M1to5.jpg" alt="배경 이미지 2" />
+      </div>
+      <div class="living-canvas-slide">
+        <img src="images/ed-g_in22_left.jpg" alt="배경 이미지 3" />
+      </div>
+      <div class="living-canvas-slide vertical">
+        <img src="images/ed-g_ne21.jpg" alt="메인 배경 이미지 4" />
+      </div>
+      <div class="living-canvas-slide">
+        <img src="images/ed-g_ne22.jpg" alt="배경 이미지 6" />
+      </div>
+      <div class="living-canvas-slide vertical">
+        <img src="images/ed-g_i21.jpg" alt="메인 배경 이미지 8" />
+      </div>
+      <div class="living-canvas-slide">
+        <img src="images/IMG_2018.jpg" alt="배경 이미지 9" />
+      </div>
+    </div>
+
+    <!-- 4. 푸터 -->
+    <footer>
+      <p>&copy; 2014-2025 강은솔. All rights reserved.</p>
+    </footer>
+
+    <!-- 5. 스크립트 -->
+    <script src="js/main-slideshow.js"></script>
+    <script src="js/mobile-menu.js"></script>
+  </body>
+</html>
